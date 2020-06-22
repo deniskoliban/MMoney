@@ -1,0 +1,104 @@
+<mat-toolbar (click)="openSnackBar($event, 'close')" color="primary">
+  <div class="hover-finger">
+    Main Calculator
+  </div>
+  <div>
+    <span class="hover-finger">Home</span>
+    <span class="hover-finger">About</span>
+    <span class="hover-finger">Services</span>
+  </div>
+</mat-toolbar>
+
+<div class="general-container">
+  <div class="center-align">
+    <mat-card class="wrapper-card">
+      <mat-card-header>
+        <mat-card-title color="primary">Calculation of founds</mat-card-title>
+        <mat-card-subtitle>Enter your current fouds and receive a calculation of ones on specified number of days
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="container">
+          <div class="finances">
+            <mat-form-field>
+              <mat-label>Enter current finances</mat-label>
+              <input type="number" matInput [(ngModel)]="money">
+            </mat-form-field>
+          </div>
+          <div class="input-dates">
+            <div>
+              <mat-form-field>
+                <mat-label>Choose first date</mat-label>
+                <input [value]="firstDate" (click)="pick.open()" (dateInput)="firstDateInit($event)"
+                  (dateChange)="firstDateInit($event)" matInput [matDatepicker]="pick">
+                <mat-datepicker-toggle matSuffix [for]="pick"></mat-datepicker-toggle>
+                <mat-datepicker #pick></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="between-pictures">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">redo</mat-icon>
+            </div>
+            <div>
+              <mat-form-field>
+                <mat-label>Choose second date</mat-label>
+                <input [value]="secondDate" (click)="picker.open()" (dateInput)="secondDateInit($event)"
+                  (dateChange)="secondDateInit($event)" matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker [startAt]="secondDate"></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="date-diff">
+            Number of days: {{dateDiff}}
+          </div>
+          <br>
+          <button color="primary" (click)="calcMoneyADay()" mat-stroked-button>Calculate</button>
+          <br>
+          <mat-card>
+            <mat-card-content class="example-card">
+              <div class="currency-holder">
+                <div class="currency-holder-title">You will have approximately money a day</div>
+                <div class="arrow">
+                  <mat-icon aria-hidden="false" aria-label="Example home icon">forward</mat-icon>
+                </div>
+                <div class="currency">
+                  {{ result | currency:'UAH':'symbol-narrow'}}
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-actions>
+        <div>
+          <mat-card>
+            <mat-card-header>
+              <button mat-raised-button class="clear-btn" (click)="clearExpences()"
+                color="accent" [disabled]="isBtnDisabled">Clear</button>
+              <span>{{reqiredExpencesCostSum | currency:'UAH':'symbol-narrow'}}</span>
+              <mat-card-title>Necessary expences</mat-card-title>
+              <mat-card-subtitle>Add required expenses</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content class="reqired-costs">
+              <mat-card *ngFor="let expence of dataArrayCopy; let i = index " class="expence-instance">
+                <mat-card-header>
+                  <mat-card-subtitle>{{expence.name}}</mat-card-subtitle>
+                  <button class="position-right-top" (click)="deleteRequiredExpence(i)" mat-icon-button color="accent">
+                    <mat-icon color="accent">clear</mat-icon>
+                  </button>
+                </mat-card-header>
+                <mat-card-content>
+                  <div class="expence-cost">{{expence.cost | currency:'UAH':'symbol-narrow'}}</div>
+                </mat-card-content>
+              </mat-card>
+            </mat-card-content>
+            <mat-card-actions align="center">
+              <button mat-mini-fab color="primary" (click)="openDialog()" class="plus-button">+</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

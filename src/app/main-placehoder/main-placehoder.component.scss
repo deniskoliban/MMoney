@@ -1,0 +1,125 @@
+.mat-toolbar{
+  justify-content: space-between;
+
+  .hover-finger:hover {
+    cursor: pointer;
+  }
+  
+  span {
+    padding-right: 10px;
+  }
+}
+
+.general-container {
+  .wrapper-card {
+    max-width: 568px;
+
+    .first-line-side-container {
+      position: relative;
+      float: right;
+      right: 0;
+    }
+
+    .container {
+     display: flex;
+     flex-direction: column ;
+     align-items: center;
+     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+     border-radius: 15px;
+     .input-dates {
+       display: flex;
+       justify-content: space-around;
+     }
+
+     .date-diff {
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+     }     
+    }
+   
+    .example-card {
+      width: 206px;
+    
+     .currency-holder {
+       display: flex;
+       flex-direction: row;
+       align-items: center;
+       
+       .currency-holder-title {
+         width: 100px ;
+       }
+       .arrow {
+        position: relative;
+        top: 3px;
+       }
+
+       .currency {
+         width: 50px;
+         margin-left: 10px;
+        }   
+      }
+    }
+
+    .reqired-costs {
+      display: flex;
+      flex-wrap: wrap ;
+      justify-content: space-between;
+
+      .expence-instance {
+        width: 239px; 
+        margin-bottom: 10px;
+      }
+    }
+
+    .position-right-top {
+      position: absolute;
+      right: 3px;
+      top: 3px;
+    }
+    
+    .clear-btn {
+      position: absolute;
+      right: 3px;
+      top: 11px;
+    }
+  }
+    .center-align {
+      display: flex;
+      justify-content: center;
+    }
+
+    
+}
+
+.plus-button {
+  font-size: large;
+}
+
+
+
+
+mat-icon {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  color: rgb(151, 151, 151);
+}
+
+mat-form-field {
+  width: 150px;
+}
+
+
+
+
+
+
+
+
